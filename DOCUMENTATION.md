@@ -52,6 +52,15 @@ pre_tasks:
      tags: setup-all
    ```
 
+## [install unattended-upgrades](roles/jnv.unattended-upgrades/README.md)
+
+1. `git submodule add https://github.com/jnv/ansible-role-unattended-upgrades.git roles/jnv.unattended-upgrades`
+2. add role to `setup.yml`
+   ```yaml
+   - role: jnv.unattended-upgrades
+     tags: setup-all
+   ```
+
 ## [Installing](docs/installing.md)
 
 1. `ansible-playbook -i inventory/hosts setup.yml --tags=setup-all`
