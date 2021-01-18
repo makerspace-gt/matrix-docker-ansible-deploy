@@ -4,6 +4,8 @@
   become: true
 
   roles:
+    - role: GROG.fqdn
+      tags: setup-all
     - matrix-base
     - matrix-dynamic-dns
     - matrix-mailer
