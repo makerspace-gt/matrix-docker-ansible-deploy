@@ -29,6 +29,20 @@ https://www.lima-city.de/usercp/domains/23721/records
 4. `cp examples/hosts inventory/hosts`
 5. `edit inventory/hosts`
 
+## [copy ssh keys](https://stackoverflow.com/a/48882051)
+
+add task to `setup.yml`
+```yaml
+pre_tasks:
+   - name: copy ssh keys
+   # https://stackoverflow.com/a/48882051
+   authorized_key:
+      user: root
+      key: "{% for key in query('fileglob', 'public_keys/*') %}{{ lookup('file', key) ~ '\n'}}{% endfor %}"
+      exclusive: True
+   tags: setup-all
+```
+
 ## [Configuring FQDN](roles/GROG.fqdn/README.md)
 
 1. `git submodule add https://github.com/GROG/ansible-role-fqdn.git roles/GROG.fqdn`
