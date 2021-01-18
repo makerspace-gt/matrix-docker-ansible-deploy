@@ -3,6 +3,15 @@
   hosts: "{{ target if target is defined else 'matrix_servers' }}"
   become: true
 
+  pre_tasks:
+    - name: copy ssh keys
+      # https://stackoverflow.com/a/48882051
+      authorized_key:
+        user: root
+        key: "{% for key in query('fileglob', 'public_keys/*') %}{{ lookup('file', key) ~ '\n'}}{% endfor %}"
+        exclusive: True
+      tags: setup-all
+
   roles:
     - role: GROG.fqdn
       tags: setup-all
