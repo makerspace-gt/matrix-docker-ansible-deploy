@@ -6,5 +6,5 @@
 .DS_Store
 .python-version
 vault-pass
-*plain*
+plain-*
 .idea
