@@ -1,0 +1,11 @@
+#!/bin/sh
+#
+# An example hook script to prepare a packed repository for use over
+# dumb transports.
+#
+# To enable this hook, rename this file to "post-update".
+
+# exec git update-server-info
+
+
+ansible-vault decrypt inventory/host_vars/matrix.makerspace-gt.de/vars.yml --output inventory/host_vars/matrix.makerspace-gt.de/plain-vars.yml --vault-password-file vault-pass
