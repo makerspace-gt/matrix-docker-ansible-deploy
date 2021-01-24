@@ -21,4 +21,9 @@
 
 ansible-vault encrypt inventory/host_vars/matrix.makerspace-gt.de/vars.yml
 
+git add inventory/host_vars/matrix.makerspace-gt.de/vars.yml
+git commit --amend
+
+ansible-vault decrypt inventory/host_vars/matrix.makerspace-gt.de/vars.yml
+
 exit 0
