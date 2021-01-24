@@ -19,14 +19,8 @@
 # This sample shows how to prevent push of commits where the log message starts
 # with "WIP" (work in progress).
 
-ansible-vault encrypt inventory/host_vars/matrix.makerspace-gt.de/vars.yml --vault-password-file vault-pass
-
-#GIT_ID=git log --format="%H" -n 1
+ansible-vault encrypt inventory/host_vars/matrix.makerspace-gt.de/plain-vars.yml --output inventory/host_vars/matrix.makerspace-gt.de/vars.yml --vault-password-file vault-pass
 
 git add inventory/host_vars/matrix.makerspace-gt.de/vars.yml
-
-git commit --amend --no-edit
-
-ansible-vault decrypt inventory/host_vars/matrix.makerspace-gt.de/vars.yml --vault-password-file vault-pass
 
 exit 0

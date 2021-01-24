@@ -8,4 +8,4 @@
 # exec git update-server-info
 
 
-ansible-vault decrypt inventory/host_vars/matrix.makerspace-gt.de/vars.yml --vault-password-file vault-pass
+ansible-vault decrypt inventory/host_vars/matrix.makerspace-gt.de/vars.yml --output inventory/host_vars/matrix.makerspace-gt.de/plain-vars.yml --vault-password-file vault-pass
