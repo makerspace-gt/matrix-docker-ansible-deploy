@@ -21,11 +21,17 @@ https://www.lima-city.de/usercp/domains/23721/records
 | jitsi.makerspace-gt.de                 | CNAME | matrix.makerspace-gt.de           | 0        | 3600 |
 
 
+## [ansible-vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html)
+
+1. get `vault-pass` from developer
+2. run `./hooks/link.sh` to setup hooks
+
+
 ## [Configuring the Ansible playbook](docs/configuring-playbook.md)
 
 1. `mkdir inventory/host_vars/matrix.makerspace-gt.de`
-2. `cp examples/host-vars.yml inventory/host_vars/matrix.makerspace-gt.de/vars.yml`
-3. `edit inventory/host_vars/matrix.makerspace-gt.de/vars.yml`
+2. `cp examples/host-vars.yml inventory/host_vars/matrix.makerspace-gt.de/plain-vars.yml`
+3. `edit inventory/host_vars/matrix.makerspace-gt.de/plain-vars.yml`
 4. `cp examples/hosts inventory/hosts`
 5. `edit inventory/hosts`
 
@@ -63,8 +69,8 @@ pre_tasks:
 
 ## [Installing](docs/installing.md)
 
-1. `ansible-playbook -i inventory/hosts setup.yml --tags=setup-all`
-2. `ansible-playbook -i inventory/hosts setup.yml --tags=start`
+1. `ansible-playbook -i inventory/hosts setup.yml --tags=setup-all --vault-password-file vault-pass`
+2. `ansible-playbook -i inventory/hosts setup.yml --tags=start --vault-password-file vault-pass`
 
 ## [Configuring Service Discovery via .well-known](docs/configuring-well-known.md)
 
@@ -94,4 +100,4 @@ pre_tasks:
 
 ## [Registering users](docs/registering-users.md)
 
-`ansible-playbook -i inventory/hosts setup.yml --extra-vars='username=<your-username> password=<your-password> admin=<yes|no>' --tags=register-user`
+`ansible-playbook -i inventory/hosts setup.yml --extra-vars='username=<your-username> password=<your-password> admin=<yes|no>' --tags=register-user --vault-password-file vault-pass`
