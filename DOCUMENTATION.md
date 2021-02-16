@@ -126,4 +126,4 @@ pre_tasks:
 3. `ansible-playbook -i inventory/hosts setup.yml --tags=etup-all,start --vault-password-file vault-pass`
 4. start a chat with @telegrambot:makerspace-gt.de
 5. !tg login
-6. https://github.com/tulir/mautrix-telegram/wiki/Relay-bot
+6. https://docs.mau.fi/bridges/python/telegram/relay-bot.html
