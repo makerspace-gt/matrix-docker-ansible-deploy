@@ -123,8 +123,7 @@ pre_tasks:
    # If you want to use the relay-bot feature (relay bot documentation), which allows anonymous user to chat with telegram users, use the following additional playbook configuration:
    matrix_mautrix_telegram_bot_token: YOUR_TELEGRAM_BOT_TOKEN
    ```
-3. `ansible-playbook -i inventory/hosts setup.yml --tags=setup-all --vault-password-file vault-pass`
-4. `ansible-playbook -i inventory/hosts setup.yml --tags=start --vault-password-file vault-pass`
-5. start a chat with @telegrambot:makerspace-gt.de
-6. !tg login
-7. https://github.com/tulir/mautrix-telegram/wiki/Relay-bot
+3. `ansible-playbook -i inventory/hosts setup.yml --tags=etup-all,start --vault-password-file vault-pass`
+4. start a chat with @telegrambot:makerspace-gt.de
+5. !tg login
+6. https://github.com/tulir/mautrix-telegram/wiki/Relay-bot
