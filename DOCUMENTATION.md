@@ -101,3 +101,30 @@ pre_tasks:
 ## [Registering users](docs/registering-users.md)
 
 `ansible-playbook -i inventory/hosts setup.yml --extra-vars='username=<your-username> password=<your-password> admin=<yes|no>' --tags=register-user --vault-password-file vault-pass`
+
+## [Setup mautrix-telegram bridge](docs/configuring-playbook-bridge-mautrix-telegram.md)
+
+1. pm botfather
+   - !newbot
+   - matrix-bridge
+   - space_gt_bot
+2. Edit vars.yml
+   ```yaml
+   matrix_mautrix_telegram_enabled: true
+   matrix_mautrix_telegram_api_id: YOUR_TELEGRAM_APP_ID
+   matrix_mautrix_telegram_api_hash: YOUR_TELEGRAM_API_HASH
+
+   # Set up Double Puppeting
+   # Method 1: automatically, by enabling Shared Secret Auth
+   matrix_synapse_ext_password_provider_shared_secret_auth_enabled: true
+   # You can put any string here, but generating a strong one is preferred (e.g. `pwgen -s 64 1`).
+   matrix_synapse_ext_password_provider_shared_secret_auth_shared_secret: YOUR_SHARED_SECRET_GOES_HERE
+
+   # If you want to use the relay-bot feature (relay bot documentation), which allows anonymous user to chat with telegram users, use the following additional playbook configuration:
+   matrix_mautrix_telegram_bot_token: YOUR_TELEGRAM_BOT_TOKEN
+   ```
+3. `ansible-playbook -i inventory/hosts setup.yml --tags=setup-all --vault-password-file vault-pass`
+4. `ansible-playbook -i inventory/hosts setup.yml --tags=start --vault-password-file vault-pass`
+5. start a chat with @telegrambot:makerspace-gt.de
+6. !tg login
+7. https://github.com/tulir/mautrix-telegram/wiki/Relay-bot
